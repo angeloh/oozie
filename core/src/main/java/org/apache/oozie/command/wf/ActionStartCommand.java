@@ -169,8 +169,7 @@ public class ActionStartCommand extends ActionCommand<Void> {
                         // Add SLA status event (STARTED) for WF_ACTION
                         // SLADbOperations.writeSlaStatusEvent(eSla,
                         // action.getId(), Status.STARTED, store);
-                        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.STARTED,
-                                                        SlaAppType.WORKFLOW_ACTION);
+                        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.STARTED, SlaAppType.WORKFLOW_ACTION);
                         XLog.getLog(getClass()).warn(XLog.STD,
                                                      "[***" + action.getId() + "***]" + "Action updated in DB!");
 
@@ -232,10 +231,8 @@ public class ActionStartCommand extends ActionCommand<Void> {
         failJob(context);
         store.updateAction(action);
         store.updateWorkflow(workflow);
-        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED,
-                                        SlaAppType.WORKFLOW_ACTION);
-        SLADbOperations.writeStausEvent(workflow.getSlaXml(), workflow.getId(), store, Status.FAILED,
-                                        SlaAppType.WORKFLOW_JOB);
+        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED, SlaAppType.WORKFLOW_ACTION);
+        SLADbOperations.writeStausEvent(workflow.getSlaXml(), workflow.getId(), store, Status.FAILED, SlaAppType.WORKFLOW_JOB);
         queueCallable(new CoordActionUpdateCommand(workflow));
         return;
     }

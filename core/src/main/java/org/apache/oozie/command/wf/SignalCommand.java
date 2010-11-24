@@ -101,8 +101,7 @@ public class SignalCommand extends WorkflowCommand<Void> {
                             // 1. Add SLA status event for WF-JOB with status
                             // STARTED
                             // 2. Add SLA registration events for all WF_ACTIONS
-                            SLADbOperations.writeStausEvent(workflow.getSlaXml(), jobId, store, Status.STARTED,
-                                                            SlaAppType.WORKFLOW_JOB);
+                            SLADbOperations.writeStausEvent(workflow.getSlaXml(), jobId, store, Status.STARTED, SlaAppType.WORKFLOW_JOB);
                             writeSLARegistrationForAllActions(workflowInstance.getApp().getDefinition(), workflow
                                     .getUser(), workflow.getGroup(), workflow.getConf(), store);
                             queueCallable(new NotificationCommand(workflow));
@@ -139,8 +138,7 @@ public class SignalCommand extends WorkflowCommand<Void> {
                             WorkflowActionBean actionToFail = store.getAction(actionToFailId, false);
                             actionToFail.resetPending();
                             actionToFail.setStatus(WorkflowActionBean.Status.FAILED);
-                            SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED,
-                                                            SlaAppType.WORKFLOW_ACTION);
+                            SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED, SlaAppType.WORKFLOW_ACTION);
                             store.updateAction(actionToFail);
                         }
 
@@ -161,8 +159,7 @@ public class SignalCommand extends WorkflowCommand<Void> {
                             default: // TODO about SUSPENDED
 
                         }
-                        SLADbOperations.writeStausEvent(workflow.getSlaXml(), jobId, store, slaStatus,
-                                                        SlaAppType.WORKFLOW_JOB);
+                        SLADbOperations.writeStausEvent(workflow.getSlaXml(), jobId, store, slaStatus, SlaAppType.WORKFLOW_JOB);
                         queueCallable(new NotificationCommand(workflow));
                         if (workflow.getStatus() == WorkflowJob.Status.SUCCEEDED) {
                             incrJobCounter(INSTR_SUCCEEDED_JOBS_COUNTER_NAME, 1);
@@ -286,8 +283,7 @@ public class SignalCommand extends WorkflowCommand<Void> {
                     eSla = XmlUtils.parseXml(slaXml);
                     String actionId = Services.get().get(UUIDService.class).generateChildId(jobId,
                                                                                             action.getAttributeValue("name") + "");
-                    SLADbOperations.writeSlaRegistrationEvent(eSla, store, actionId, SlaAppType.WORKFLOW_ACTION, user,
-                                                              group);
+                    SLADbOperations.writeSlaRegistrationEvent(eSla, store, actionId, SlaAppType.WORKFLOW_ACTION, user, group);
                 }
             }
         }

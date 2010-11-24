@@ -58,8 +58,7 @@ public class KillCommand extends WorkflowCommand<Void> {
                 if (workflow.getStatus() != WorkflowJob.Status.FAILED) {
                     incrJobCounter(1);
                     workflow.setStatus(WorkflowJob.Status.KILLED);
-                    SLADbOperations.writeStausEvent(workflow.getSlaXml(), workflow.getId(), store, Status.KILLED,
-                                                    SlaAppType.WORKFLOW_JOB);
+                    SLADbOperations.writeStausEvent(workflow.getSlaXml(), workflow.getId(), store, Status.KILLED, SlaAppType.WORKFLOW_JOB);
                     workflow.getWorkflowInstance().kill();
                     WorkflowInstance wfInstance = workflow.getWorkflowInstance();
                     ((LiteWorkflowInstance) wfInstance).setStatus(WorkflowInstance.Status.KILLED);
@@ -80,8 +79,7 @@ public class KillCommand extends WorkflowCommand<Void> {
                             || action.getStatus() == WorkflowActionBean.Status.END_MANUAL) {
                         action.setStatus(WorkflowActionBean.Status.KILLED);
                         action.resetPending();
-                        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.KILLED,
-                                                        SlaAppType.WORKFLOW_ACTION);
+                        SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.KILLED, SlaAppType.WORKFLOW_ACTION);
                         store.updateAction(action);
                     }
                 }

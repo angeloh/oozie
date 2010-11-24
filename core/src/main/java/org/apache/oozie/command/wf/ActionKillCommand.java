@@ -65,8 +65,7 @@ public class ActionKillCommand extends ActionCommand<Void> {
                     store.updateAction(action);
                     store.updateWorkflow(workflow);
                     // Add SLA status event (KILLED) for WF_ACTION
-                    SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.KILLED,
-                                                    SlaAppType.WORKFLOW_ACTION);
+                    SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.KILLED, SlaAppType.WORKFLOW_ACTION);
                     queueCallable(new NotificationCommand(workflow, action));
                 }
                 catch (ActionExecutorException ex) {
@@ -78,8 +77,7 @@ public class ActionKillCommand extends ActionCommand<Void> {
                     store.updateAction(action);
                     store.updateWorkflow(workflow);
                     // What will happen to WF and COORD_ACTION, NOTIFICATION?
-                    SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED,
-                                                    SlaAppType.WORKFLOW_ACTION);
+                    SLADbOperations.writeStausEvent(action.getSlaXml(), action.getId(), store, Status.FAILED, SlaAppType.WORKFLOW_ACTION);
                     XLog.getLog(getClass()).warn("Exception while executing kill(). Error Code [{0}], Message[{1}]",
                                                  ex.getErrorCode(), ex.getMessage(), ex);
                 }
