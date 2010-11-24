@@ -14,12 +14,9 @@
  */
 package org.apache.oozie;
 
-import org.apache.oozie.service.LiteWorkflowAppService;
 import org.apache.oozie.test.XTestCase;
-import org.apache.oozie.workflow.WorkflowInstance;
 import org.apache.oozie.workflow.WorkflowApp;
 import org.apache.oozie.workflow.WorkflowException;
-import org.apache.oozie.workflow.lite.LiteWorkflowApp;
 import org.apache.oozie.workflow.lite.LiteWorkflowInstance;
 import org.apache.oozie.WorkflowJobBean;
 import org.apache.hadoop.conf.Configuration;
@@ -32,7 +29,6 @@ import java.util.Map;
 
 public class TestWorkflowBean extends XTestCase {
 
-    //private static class MyWorkflowInstance implements WorkflowInstance {
     private static class MyWorkflowInstance extends LiteWorkflowInstance {
         private static final String TRANSITION_TO = "transition.to";
         private static String PATH_SEPARATOR = "/";
@@ -42,63 +38,80 @@ public class TestWorkflowBean extends XTestCase {
         MyWorkflowInstance() {
         }
 
+        @Override
         public Configuration getConf() {
             return null;
         }
 
+        @Override
         public String getId() {
             return null;
         }
 
+        @Override
         public WorkflowApp getApp() {
             return null;
         }
 
+        @Override
         public boolean start() throws WorkflowException {
             return false;
         }
 
+        @Override
         public boolean signal(String path, String signaValue) throws WorkflowException {
             return false;
         }
 
+        @Override
         public void fail(String nodeName) throws WorkflowException {
         }
 
+        @Override
         public void kill() throws WorkflowException {
         }
 
+        @Override
         public void suspend() throws WorkflowException {
         }
 
+        @Override
         public void resume() throws WorkflowException {
         }
 
+        @Override
         public Status getStatus() {
             return null;
         }
 
+        @Override
         public void setVar(String name, String value) {
         }
 
+        @Override
         public String getVar(String name) {
             return null;
         }
 
+        @Override
         public Map<String, String> getAllVars() {
             return null;
         }
 
+        @Override
         public void setAllVars(Map<String, String> varMap) {
         }
 
+        @Override
         public void setTransientVar(String name, Object value) {
         }
 
+        @Override
         public Object getTransientVar(String name) {
             return null;
         }
 
+        @Override
         public String getTransition(String node) {
             return null;
         }
@@ -126,10 +139,6 @@ public class TestWorkflowBean extends XTestCase {
         workflow = new WorkflowJobBean();
         workflow.readFields(dis);
 
-    }
-
-    public void testFullWriteRead() throws Exception {
-        //TODO
     }
 
 }

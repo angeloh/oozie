@@ -217,6 +217,7 @@ public class Instrumentation {
          *
          * @return the String representation of the counter value.
          */
+        @Override
         public String toString() {
             return Long.toString(get());
         }
@@ -249,6 +250,7 @@ public class Instrumentation {
          *
          * @return the String representation of the timer value.
          */
+        @Override
         public String toString() {
             return XLog.format("ticks[{0}] totalAvg[{1}] ownAvg[{2}]", ticks, getTotalAvg(), getOwnAvg());
         }
@@ -694,6 +696,7 @@ public class Instrumentation {
      *
      * @return the string representation of the instrumentation.
      */
+    @Override
     public String toString() {
         String E = System.getProperty("line.separator");
         StringBuilder sb = new StringBuilder(4096);

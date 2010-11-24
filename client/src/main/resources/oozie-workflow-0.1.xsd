@@ -13,8 +13,14 @@
   See the License for the specific language governing permissions and
   limitations under the License. See accompanying LICENSE file.
 -->
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:workflow="uri:oozie:workflow:0.1"
-           elementFormDefault="qualified" targetNamespace="uri:oozie:workflow:0.1">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:workflow="uri:oozie:workflow:0.1"
+           xmlns:xml="http://www.w3.org/XML/1998/namespace"
+           elementFormDefault="qualified" 
+           targetNamespace="uri:oozie:workflow:0.1">
+
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+                    schemaLocation="http://www.w3.org/2005/08/xml.xsd"/>
 
     <xs:element name="workflow-app" type="workflow:WORKFLOW-APP"/>
 
@@ -240,12 +246,20 @@
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="name" minOccurs="1" maxOccurs="1" type="xs:string"/>
-                        <xs:element name="value" minOccurs="1" maxOccurs="1" type="xs:string"/>
+                        <xs:element name="value" type="workflow:VALUE" minOccurs="1" maxOccurs="1"/>
                         <xs:element name="description" minOccurs="0" maxOccurs="1" type="xs:string"/>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="VALUE">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xml:space" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
 
     <xs:complexType name="STREAMING">
