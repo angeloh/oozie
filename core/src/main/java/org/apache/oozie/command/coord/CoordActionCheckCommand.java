@@ -44,6 +44,7 @@ public class CoordActionCheckCommand extends CoordinatorCommand<Void> {
         this.actionCheckDelay = actionCheckDelay;
     }
 
+    @Override
     protected Void call(CoordinatorStore cstore) throws StoreException, CommandException {
         try {
             //if the action has been updated, quit this command
@@ -90,8 +91,7 @@ public class CoordActionCheckCommand extends CoordinatorCommand<Void> {
                 log.debug("Updating Coordintaor actionId :" + coordAction.getId() + "status to =" + coordAction.getStatus());
                 cstore.updateCoordinatorAction(coordAction);
                 if (slaStatus != null) {
-                    SLADbOperations.writeStausEvent(coordAction.getSlaXml(), coordAction.getId(), cstore, slaStatus,
-                                                    SlaAppType.COORDINATOR_ACTION);
+                    SLADbOperations.writeStausEvent(coordAction.getSlaXml(), coordAction.getId(), cstore, slaStatus, SlaAppType.COORDINATOR_ACTION);
                 }
             }
 

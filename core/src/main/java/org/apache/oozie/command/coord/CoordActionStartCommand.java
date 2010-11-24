@@ -148,8 +148,7 @@ public class CoordActionStartCommand extends CoordinatorCommand<Void> {
             try {
                 boolean startJob = true;
                 Configuration conf = new XConfiguration(new StringReader(coordAction.getRunConf()));
-                SLADbOperations.writeStausEvent(coordAction.getSlaXml(), coordAction.getId(), store, Status.STARTED,
-                                                SlaAppType.COORDINATOR_ACTION);
+                SLADbOperations.writeStausEvent(coordAction.getSlaXml(), coordAction.getId(), store, Status.STARTED, SlaAppType.COORDINATOR_ACTION);
 
                 // Normalize workflow appPath here;
                 JobUtils.normalizeAppPath(conf.get(OozieClient.USER_NAME), conf.get(OozieClient.GROUP_NAME), conf);

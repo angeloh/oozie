@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2010 Yahoo! Inc. All rights reserved.
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License. See accompanying LICENSE file.
- */
+* Copyright (c) 2010 Yahoo! Inc. All rights reserved.
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License. See accompanying LICENSE file.
+*/
 package org.apache.oozie.command.coord;
 
 import java.io.ByteArrayInputStream;
@@ -71,10 +71,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1 -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1 -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunActions1() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -114,10 +114,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1-2 -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1-2 -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunActions2() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -158,10 +158,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1,2 -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1,2 -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunActions3() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -201,11 +201,11 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Negative Test : rerun <jobId> -action 1-3 -nocleanup. Only 2 actions is
-     * in db.
-     *
-     * @throws Exception
-     */
+* Negative Test : rerun <jobId> -action 1-3 -nocleanup. Only 2 actions is
+* in db.
+*
+* @throws Exception
+*/
     public void testCoordRerunActionsNeg1() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -241,11 +241,11 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Negative Test : rerun <jobId> -action 1 -nocleanup. Action is not in
-     * terminal state.
-     *
-     * @throws Exception
-     */
+* Negative Test : rerun <jobId> -action 1 -nocleanup. Action is not in
+* terminal state.
+*
+* @throws Exception
+*/
     public void testCoordRerunActionsNeg2() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -287,10 +287,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -date 2009-12-15T17:00Z -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -date 2009-12-15T17:00Z -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunDate1() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -330,10 +330,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -date 2009-12-15T01:00Z::2009-12-16T01:00Z -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -date 2009-12-15T01:00Z::2009-12-16T01:00Z -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunDate2() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -374,10 +374,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -date 2009-12-15T01:00Z,2009-12-16T01:00Z -nocleanup
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -date 2009-12-15T01:00Z,2009-12-16T01:00Z -nocleanup
+*
+* @throws Exception
+*/
     public void testCoordRerunDate3() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -418,11 +418,11 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -date 2009-12-15T01:00Z::2009-12-17T01:00Z -nocleanup
-     * 2009-12-17T01:00Z is not in the action list, but Oozie will tolerate this.
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -date 2009-12-15T01:00Z::2009-12-17T01:00Z -nocleanup
+* 2009-12-17T01:00Z is not in the action list, but Oozie will tolerate this.
+*
+* @throws Exception
+*/
     public void testCoordRerunDate4() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -463,11 +463,11 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -date 2009-12-15T01:00Z,2009-12-16T01:00Z,2009-12-17T01:00Z -nocleanup
-     * 2009-12-17T01:00Z is not in the action list, Oozie will not tolerate this when comma is used.
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -date 2009-12-15T01:00Z,2009-12-16T01:00Z,2009-12-17T01:00Z -nocleanup
+* 2009-12-17T01:00Z is not in the action list, Oozie will not tolerate this when comma is used.
+*
+* @throws Exception
+*/
     public void testCoordRerunDateNeg() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum1 = 1;
@@ -503,10 +503,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1 -nocleanup -refresh
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1 -nocleanup -refresh
+*
+* @throws Exception
+*/
     public void testCoordRerunRefresh() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -569,10 +569,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1
-     *
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1
+*
+* @throws Exception
+*/
     public void testCoordRerunCleanup() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -623,10 +623,10 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
     /**
-     * Test : rerun <jobId> -action 1 with no output-event
-     * 
-     * @throws Exception
-     */
+* Test : rerun <jobId> -action 1 with no output-event
+*
+* @throws Exception
+*/
     public void testCoordRerunCleanupNoOutputEvents() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -667,11 +667,11 @@ public class TestCoordRerunCommand extends XFsTestCase {
     }
 
  /**
-     * Negative Test : rerun <jobId> -action 1 -nocleanup.
-     * Coordiantor job is killed, so no actions are able to rerun.
-     *
-     * @throws Exception
-     */
+* Negative Test : rerun <jobId> -action 1 -nocleanup.
+* Coordiantor job is killed, so no actions are able to rerun.
+*
+* @throws Exception
+*/
     public void testCoordRerunNeg() throws Exception {
         final String jobId = "0000000-" + new Date().getTime() + "-testCoordRerun-C";
         final int actionNum = 1;
@@ -817,7 +817,7 @@ public class TestCoordRerunCommand extends XFsTestCase {
         conf.setProperty("user.name", getTestUser());
         injectKerberosInfo(conf);
 
-        String content = "<workflow-app xmlns='uri:oozie:workflow:0.1'  xmlns:sla='uri:oozie:sla:0.1' name='no-op-wf'>";
+        String content = "<workflow-app xmlns='uri:oozie:workflow:0.1' xmlns:sla='uri:oozie:sla:0.1' name='no-op-wf'>";
         content += "<start to='end' />";
         content += "<end name='end' /></workflow-app>";
         writeToFile(content, wfAppPath, "workflow.xml");
@@ -919,3 +919,4 @@ public class TestCoordRerunCommand extends XFsTestCase {
         return actionNomialTime;
     }
 }
+

@@ -17,14 +17,10 @@ package org.apache.oozie.command.coord;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.oozie.CoordinatorJobBean;
 import org.apache.oozie.CoordinatorJobInfo;
-import org.apache.oozie.DagEngineException;
 import org.apache.oozie.command.CommandException;
-import org.apache.oozie.command.wf.JobCommand;
 import org.apache.oozie.store.CoordinatorStore;
 import org.apache.oozie.store.StoreException;
-import org.apache.oozie.util.ParamChecker;
 import org.apache.oozie.util.XLog;
 
 public class CoordJobsCommand extends CoordinatorCommand<CoordinatorJobInfo> {

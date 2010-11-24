@@ -78,8 +78,7 @@ public class CoordActionUpdateCommand extends CoordinatorCommand<Void> {
                         "Updating Coordintaor id :" + caction.getId() + "status to =" + caction.getStatus());
                 cstore.updateCoordinatorAction(caction);
                 if (slaStatus != null) {
-                    SLADbOperations.writeStausEvent(caction.getSlaXml(), caction.getId(), cstore, slaStatus,
-                                                    SlaAppType.COORDINATOR_ACTION);
+                    SLADbOperations.writeStausEvent(caction.getSlaXml(), caction.getId(), cstore, slaStatus, SlaAppType.COORDINATOR_ACTION);
                 }
                 queueCallable(new CoordActionReadyCommand(caction.getJobId()));
             }
