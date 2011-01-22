@@ -22,7 +22,7 @@ import org.apache.oozie.util.XLog;
 public class CredentialsProvider {
     Credentials auth;
     String type;
-    private static final String AUTH_KEY = "oozie.authentications.authenticator";
+    private static final String AUTH_KEY = "oozie.credentials.credentialclasses";
     private static final XLog LOG = XLog.getLog(CredentialsProvider.class);
 
     /**
