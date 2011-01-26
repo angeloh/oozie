@@ -1,3 +1,7 @@
+-- Oozie 2.2.5 release
+
+GH-0332 Adding Credentials Module
+
 -- Oozie 2.2.4 release
 
 GH-0066 Add Uniqueness functionality to queue
