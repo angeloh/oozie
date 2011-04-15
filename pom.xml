@@ -29,6 +29,12 @@
         </license>
     </licenses>
 
+	<parent>
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>6</version>
+	</parent>
+
     <organization>
         <name>Yahoo</name>
         <url>http://www.yahoo.com</url>
@@ -36,8 +42,27 @@
 
     <scm>
         <connection>scm:git:git://github.com/yahoo/oozie.git</connection>
+        <developerConnection>scm:git:git://github.com/yahoo/oozie.git</developerConnection>
         <url>https://github.com/yahoo/oozie</url>
     </scm>
+
+	<developers>
+		<developer>
+			<id>mislam77</id>
+			<name>Mohammad Kamrul Islam</name>
+			<email>mislam77@yahoo.com</email>
+		</developer>
+		<developer>
+			<id>angelokh</id>
+			<name>Angelo Kaichen Huang</name>
+			<email>angelokh@ymail.com</email>
+		</developer>
+		<developer>
+			<id>bansalmayank</id>
+			<name>Mayank Bansal</name>
+			<email>mabansal@gmail.com</email>
+		</developer>
+	</developers>
 
     <properties>
         <!-- to be able to run a single test case from the main project -->
@@ -62,7 +87,7 @@
         <module>sharelib</module>
         <module>distro</module>
     </modules>
-
+    <!-- 
     <distributionManagement>
         <repository>
             <id>internal.maven.repo</id>
@@ -70,8 +95,9 @@
             <url>${internal.maven.repository}</url>
         </repository>
     </distributionManagement>
-
+    -->
     <repositories>
+        <!--
         <repository>
             <id>internal.maven.repo</id>
             <name>Internal Repository for Integration</name>
@@ -80,6 +106,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
+        -->
         <repository>
             <id>central</id>
             <url>http://repo1.maven.org/maven2</url>
@@ -87,6 +114,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        <!--
         <repository>
             <id>Codehaus repository</id>
             <url>http://repository.codehaus.org/</url>
@@ -94,6 +122,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
+        -->
         <repository>
             <id>yahoo.github</id>
             <url>http://yahoo.github.com/maven/repository</url>
@@ -102,8 +131,9 @@
             </snapshots>
         </repository>
     </repositories>
-
+   
     <pluginRepositories>
+        <!--
         <pluginRepository>
             <id>internal.maven.repo</id>
             <name>Internal Repository for Integration</name>
@@ -112,6 +142,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </pluginRepository>
+         -->
         <pluginRepository>
             <id>yahoo.github</id>
             <url>http://yahoo.github.com/maven/repository</url>
@@ -461,6 +492,11 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.7</version>
                 </plugin>
@@ -490,6 +526,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>2.1</version>                    
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-gpg-plugin</artifactId>
+          			<version>1.1</version>              
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -567,6 +608,25 @@
                     </descriptors>
                 </configuration>
             </plugin>
+            <plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
         </plugins>
     </build>
 

@@ -61,7 +61,7 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -73,6 +73,12 @@
                     </descriptors>
                 </configuration>
             </plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
             <!-- Downloading Tomcat TAR.GZ, using downloads/ dir to avoid downloading over an over -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
